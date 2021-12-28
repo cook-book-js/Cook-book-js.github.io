@@ -1,0 +1,57 @@
+import { login } from "../api/userService.js";
+import { html } from "../api/library.js";
+import { createSubmitHandler } from "../api/util.js";
+import { field } from "./common.js";
+
+let loginTemplate = (onLogin, errors, data) => html`
+<section id="login">
+    <article>
+        <h2>Login</h2>
+        <form @submit=${onLogin} id="loginForm">
+
+            ${errors ? html`<p class="error">${errors.message} </p>` : null}
+            ${field({ label: "Username", name: "username", value: data.username, error: errors.username })}
+            ${field({ label: "Password", name: "password", type: "password", error: errors.password })}
+
+
+            <input type="submit" value="Login">
+        </form>
+    </article>
+</section>`;
+
+
+
+export function loginPage(ctx) {
+    update();
+
+    function update(errors = {}, data = {}) {
+        ctx.render(loginTemplate(createSubmitHandler(onLogin, "username", "password"), errors, data));
+    }
+
+    async function onLogin({ username, password }, event) {
+
+        try {
+            if (username == "" || password == "") {
+                throw {
+                    message: "Please fill all fields!",
+                    errors: {
+                        name: true,
+                        password: true
+                    }
+                };
+
+            };
+
+            await login(username, password);
+            event.target.reset();
+            ctx.updateSession();
+            ctx.updateUserNav();
+            ctx.page.redirect("/catalog")
+        } catch (err) {
+            update(err, {username})
+        }
+    };
+};
+
+
+
