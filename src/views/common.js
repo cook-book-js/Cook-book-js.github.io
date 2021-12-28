@@ -12,6 +12,6 @@ export let field = ({ label, name, type = "text", value = "", placeholder = " ",
         <label>${label}: <input class=${classMap({ error })} type=${type} name=${name}
          placeholder=${placeholder} .value=${value}></label>`;
     };
-
-
 };
+
+

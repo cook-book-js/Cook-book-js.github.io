@@ -34,10 +34,8 @@ export function loginPage(ctx) {
             if (username == "" || password == "") {
                 throw {
                     message: "Please fill all fields!",
-                    errors: {
-                        name: true,
+                        username: true,
                         password: true
-                    }
                 };
 
             };
@@ -48,7 +46,7 @@ export function loginPage(ctx) {
             ctx.updateUserNav();
             ctx.page.redirect("/catalog")
         } catch (err) {
-            update(err, {username})
+            update(err, { username })
         }
     };
 };
