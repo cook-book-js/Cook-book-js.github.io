@@ -1,5 +1,5 @@
 import { html, until } from "../api/library.js";
-import { getRecipes } from "../api/recipeService.js";
+import { getRecentRecipes } from "../api/recipeService.js";
 import { spinner } from "./common.js";
 
 let homeTemplate = (recipePromise) => html`
@@ -32,7 +32,7 @@ export function homePage(ctx) {
 };
 
 async function loadRecipes() {
-    let { results: recipes } = await getRecipes();
+    let { results: recipes } = await getRecentRecipes();
 
     if (recipes.length == 0) {
         return html`<p>No recipes found. Be the first to post a new recipe!</p>`

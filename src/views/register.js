@@ -1,7 +1,7 @@
 import { register } from "../api/userService.js";
 import { html } from "../api/library.js";
 import { createSubmitHandler } from "../api/util.js";
-import { field } from "./common.js";
+import { errorMsg, field } from "./common.js";
 
 let registerTemplate = (onRegister, errors, data) => html`
 <section id="register">
@@ -9,13 +9,12 @@ let registerTemplate = (onRegister, errors, data) => html`
         <h2>Register</h2>
         <form @submit=${onRegister} id="registerForm">
 
-            ${errors ? html`<p class="error">${errors.message} </p>` : null}
-
+            ${errorMsg(errors)}
             ${field({ label: "Username", name: "username", value: data.username, error: errors.username })}
             ${field({ label: "E-mail", name: "email", value: data.email, error: errors.email })}
             ${field({
-    label: "Password", name: "password", type: "password", value: data.email, error: errors.password
-})}
+            label: "Password", name: "password", type: "password", value: data.email, error: errors.password
+            })}
             ${field({ label: "Repeat", name: "repass", type: "password", value: data.repass, error: errors.repass })}
 
             <input type="submit" value="Register">

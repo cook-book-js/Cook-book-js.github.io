@@ -1,7 +1,7 @@
 import { login } from "../api/userService.js";
 import { html } from "../api/library.js";
 import { createSubmitHandler } from "../api/util.js";
-import { field } from "./common.js";
+import { errorMsg, field } from "./common.js";
 
 let loginTemplate = (onLogin, errors, data) => html`
 <section id="login">
@@ -9,7 +9,7 @@ let loginTemplate = (onLogin, errors, data) => html`
         <h2>Login</h2>
         <form @submit=${onLogin} id="loginForm">
 
-            ${errors ? html`<p class="error">${errors.message} </p>` : null}
+            ${errorMsg(errors)}
             ${field({ label: "Username", name: "username", value: data.username, error: errors.username })}
             ${field({ label: "Password", name: "password", type: "password", error: errors.password })}
 
@@ -34,8 +34,8 @@ export function loginPage(ctx) {
             if (username == "" || password == "") {
                 throw {
                     message: "Please fill all fields!",
-                        username: true,
-                        password: true
+                    username: true,
+                    password: true
                 };
 
             };

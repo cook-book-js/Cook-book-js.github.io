@@ -5,13 +5,21 @@ export let spinner = () => html`
 
 export let field = ({ label, name, type = "text", value = "", placeholder = " ", error }) => {
     if (type == "textarea") {
-        html`<label class="ml">${label}: <textarea class=${classMap({ error })} name=${name}
-        placeholder=${placeholder} .value=${value}></textarea></label>`
+        html`<label class="ml">${label}: <textarea class=${classMap({ error })} name=${name} placeholder=${placeholder}
+        .value=${value}></textarea></label>`
     } else {
         return html`
-        <label>${label}: <input class=${classMap({ error })} type=${type} name=${name}
-         placeholder=${placeholder} .value=${value}></label>`;
+        <label>${label}: <input class=${classMap({ error })} type=${type} name=${name} placeholder=${placeholder}
+                .value=${value}></label>`;
     };
+};
+
+export let errorMsg = (errors) => {
+    if (errors) {
+        return html`<p class="error">${errors.message} </p>`
+    } else {
+        return null;
+    }
 };
 
 

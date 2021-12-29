@@ -1,9 +1,27 @@
 import * as api from "./api.js";
 import { addOwner, endpoints } from "./data.js";
 
+export async function getRecentRecipes() {
+    return api.get(endpoints.recent)
+};
 
-export async function getRecipes() {
-    return api.get(endpoints.getRecipes)
+export async function getRecipes(page, query) {
+    if (query) {
+        query = {
+            name: {
+                $text: {
+                    $search: {
+                        $term: query,
+                        $caseSensitive: false
+                    }
+                }
+            }
+        }
+        return api.get(endpoints.recipesSearch(page, query))
+    } else {
+        return api.get(endpoints.recipes(page))
+    }
+
 };
 
 export async function getRecipeById(id) {
