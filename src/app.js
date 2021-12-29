@@ -33,6 +33,6 @@ page.start();
 async function onLogout() {
     await logout();
     initialize();
-    document.getElementById("welcomeMsg").style.display = "none";
+    document.getElementById("welcomeMsg").textContent = "Welcome, user!"
     page.redirect("/");
 };
