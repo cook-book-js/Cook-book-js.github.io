@@ -8,8 +8,9 @@ export let endpoints = {
     recipesSearch: (page, query) => `/classes/Recipe?where=${createQuery(query)}&skip=${(page - 1) * pageSize}&limit=${pageSize}`,
     createRecipes: "/classes/Recipe",
     recipeDetails: (id) => `/classes/Recipe/${id}?include=owner`,
-    commentsByRecipe: (recipeId) => `/classes/Comment?where=${createPointerQuery("recipe", "Recipe", recipeId)}&include=owner`,
-    comments: "/classes/Comment"
+    commentsByRecipe: (recipeId) => `/classes/Comment?where=${createPointerQuery("recipe", "Recipe", recipeId)}&include=owner&order=-createdAt`,
+    comments: "/classes/Comment",
+    recipeById: '/classes/Recipe/',
 };
 
 export function createPointerQuery(propName, className, objectId) {

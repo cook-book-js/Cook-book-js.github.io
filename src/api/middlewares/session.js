@@ -6,7 +6,7 @@ export default function initialize() {
 
     return function (ctx, next) {
 
-        ctx.updateSession = () => getUserData();
+        ctx.updateSession = () => updateSession();
         ctx.user = user;
 
         next();

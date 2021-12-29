@@ -12,19 +12,19 @@ let catalogTemplate = (recipePromise, onSearch, page = 1, search = "") => html`
         </form>
     </div>
 
-    <header class="section-title">
+    <!-- <header class="section-title">
         Page 2 of 3
         <a class="pager" href="/catalog/1">&lt; Prev</a>
         <a class="pager" href="/catalog/3">Next &gt;</a>
-    </header>
+    </header> -->
 
     ${until(recipePromise, spinner())}
 
-    <footer class="section-title">
+    <!-- <footer class="section-title">
         Page 2 of 3
         <a class="pager" href="/catalog/1">&lt; Prev</a>
         <a class="pager" href="/catalog/3">Next &gt;</a>
-    </footer>
+    </footer> -->
 
 </section>`;
 

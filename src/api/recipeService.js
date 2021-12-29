@@ -34,11 +34,11 @@ export async function createRecipes(recipe) {
 };
 
 export async function updateRecipes(id, recipe) {
-    return api.put(endpoints.getRecipeById + id, recipe)
+    return api.put(endpoints.recipeById + id, recipe)
 };
 
 export async function deleteRecipe(id) {
-    return api.del(endpoints.getRecipeById + id)
+    return api.del(endpoints.recipeById + id)
 };
 
 

@@ -23,9 +23,11 @@ export default function initialize() {
         if (userData) {
             document.getElementById("user").style.display = "inline-block";
             document.getElementById("guest").style.display = "none";
+            document.getElementById("welcomeMsg").textContent =`Welcome, ${userData.username}!`
         } else {
             document.getElementById("user").style.display = "none";
             document.getElementById("guest").style.display = "inline-block";
+        
         };
     }
 

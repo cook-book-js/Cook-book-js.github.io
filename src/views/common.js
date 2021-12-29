@@ -5,7 +5,7 @@ export let spinner = () => html`
 
 export let field = ({ label, name, type = "text", value = "", placeholder = " ", error }) => {
     if (type == "textarea") {
-        html`<label class="ml">${label}: <textarea class=${classMap({ error })} name=${name} placeholder=${placeholder}
+        return html`<label class="ml">${label}: <textarea class=${classMap({ error })} name=${name} placeholder=${placeholder}
         .value=${value}></textarea></label>`
     } else {
         return html`
