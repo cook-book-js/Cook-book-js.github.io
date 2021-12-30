@@ -14,9 +14,9 @@ let homeTemplate = (recipePromise) => html`
 
 
     </div>
-    <footer class="section-title">
+    <!-- <footer class="section-title">
         <p>Browse all recipes in the <a href="/catalog">Catalog</a></p>
-    </footer>
+    </footer> -->
 </section>`;
 
 let recipePreview = (recipe) => html`

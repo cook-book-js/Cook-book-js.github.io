@@ -51,7 +51,7 @@ export function registerPage(ctx) {
             event.target.reset();
             ctx.updateSession();
             ctx.updateUserNav();
-            ctx.page.redirect("/catalog")
+            ctx.page.redirect("/")
         } catch (err) {
             if (err.code == 202) {
                 err.username = true;
